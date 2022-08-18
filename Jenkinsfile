@@ -1,5 +1,9 @@
 pipeline {
-    agent { docker 'public.ecr.aws/docker/library/golang:latest' }
+    agent { docker {
+        image 'public.ecr.aws/docker/library/golang:latest'
+        label 'linux'
+        } 
+    }
     environment {
       // moving the cache to the workspace might speed up
       // the build stage.  maybe use ${env.WORKSPACE}/.build_cache?
